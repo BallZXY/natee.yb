@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unique Bangkok — The City of Angels</title>
+    <meta
+      name="description"
+      content="A deeper look at Bangkok — traditional soul, futuristic pulse. Concept, an interactive 3D map, AI craft showcases, and the full slide presentation."
+    />
+    <meta name="theme-color" content="#14121c" />
+
+    <!-- Fonts: Playfair Display (serif headings) + Outfit (sans body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- ============ STICKY NAVBAR ============ -->
+    <header class="navbar" id="navbar">
+      <nav class="nav container">
+        <a href="#concept" class="brand">
+          <span class="brand-mark">Unique</span>
+          <span class="brand-sub">BANGKOK</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#concept">Concept</a></li>
+          <li><a href="#map">Map</a></li>
+          <li><a href="#ai-image">AI Image</a></li>
+          <li><a href="#desmos">Desmos</a></li>
+          <li><a href="#mermaid">Mermaid</a></li>
+          <li><a href="#latex">LaTeX</a></li>
+          <li><a href="#notebooklm">NotebookLM</a></li>
+          <li><a href="#presentation">Presentation</a></li>
+        </ul>
+
+        <button
+          type="button"
+          class="nav-toggle"
+          id="navToggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- ============ 1. CONCEPT ============ -->
+      <section id="concept" class="concept">
+        <div class="concept-bg" aria-hidden="true">
+          <img src="./images/bangkok-scifi.png" alt="" />
+          <div class="concept-overlay"></div>
+        </div>
+
+        <div class="container concept-inner">
+          <span class="pill-kicker reveal">The City of Angels</span>
+
+          <h1 class="concept-title reveal" data-delay="1">
+            Know Bangkok on a <span class="text-gold">deeper level</span>
+          </h1>
+
+          <p class="concept-lead reveal" data-delay="2">
+            This is an invitation to look past the postcard. To wander the
+            hidden gems tucked down unnamed sois, to fall for the charming chaos
+            of the markets, and to feel the perfect contrasts that make this
+            city unlike anywhere on earth — where gilded temple spires catch the
+            same light as electric night-market signs.
+          </p>
+
+          <div class="contrast-row reveal" data-delay="3">
+            <div class="contrast">
+              <span>Ancient temples</span><em>×</em
+              ><span class="text-pink">neon skylines</span>
+            </div>
+            <div class="contrast">
+              <span>Street-cart noodles</span><em>×</em
+              ><span class="text-pink">rooftop fine dining</span>
+            </div>
+            <div class="contrast">
+              <span>Sacred calm</span><em>×</em
+              ><span class="text-pink">joyful chaos</span>
+            </div>
+          </div>
+
+          <div class="concept-cta reveal" data-delay="4">
+            <a href="#map" class="btn btn-gold">Explore the city</a>
+            <a href="#presentation" class="btn btn-ghost"
+              >View the presentation</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 2. MAP ============ -->
+      <section id="map" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <div class="heading-kicker reveal">
+              <span class="rule"></span><span>02 · Map</span
+              ><span class="rule"></span>
+            </div>
+            <h2 class="reveal" data-delay="1">A 3D map of the city</h2>
+            <p class="reveal" data-delay="2">
+              Tilt into an isometric Bangkok. Tap any glowing landmark to slide
+              open its story — sacred sites in gold, unforgettable food in neon
+              pink.
+            </p>
+          </div>
+
+          <div class="map-wrap reveal">
+            <div class="map-stage">
+              <div class="map-plane" id="mapPlane">
+                <div class="map-grid"></div>
+                <svg
+                  class="map-river"
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M8 -4 C 20 24, 6 40, 22 56 C 36 70, 30 84, 44 104"
+                    fill="none"
+                    stroke="rgba(58, 212, 222, 0.45)"
+                    stroke-width="7"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <!-- pins injected by script.js -->
+              </div>
+
+              <div class="map-legend">
+                <span><i class="dot dot-gold"></i> Attractions</span>
+                <span><i class="dot dot-pink"></i> Food</span>
+              </div>
+
+              <div class="map-hint" id="mapHint">
+                Tap a glowing landmark to explore
+              </div>
+            </div>
+
+            <!-- sliding detail panel injected/populated by script.js -->
+            <aside
+              class="map-panel"
+              id="mapPanel"
+              role="dialog"
+              aria-modal="false"
+              aria-label="Location details"
+              aria-hidden="true"
+            ></aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 3–7. SHOWCASE CARDS (injected by script.js) ============ -->
+      <div id="showcases"></div>
+
+      <!-- ============ 8. PRESENTATION ============ -->
+      <section id="presentation" class="section">
+        <div class="container">
+          <div class="section-heading">
+            <div class="heading-kicker reveal">
+              <span class="rule"></span><span>08 · Presentation</span
+              ><span class="rule"></span>
+            </div>
+            <h2 class="reveal" data-delay="1">The full slide deck</h2>
+            <p class="reveal" data-delay="2">
+              Everything above, assembled into one presentation. Open AI.pdf to
+              page through the complete Unique Bangkok showcase.
+            </p>
+          </div>
+
+          <div class="deck reveal">
+            <div class="deck-chrome">
+              <span class="chip-dot dot-pink"></span>
+              <span class="chip-dot dot-gold"></span>
+              <span class="chip-dot dot-cyan"></span>
+              <span class="deck-file">AI.pdf — Unique Bangkok</span>
+            </div>
+
+            <div class="deck-slide">
+              <span class="deck-eyebrow">Slide Presentation</span>
+              <h3>Unique Bangkok</h3>
+              <p>
+                The City of Angels — a deeper look through culture, food, and
+                AI-assisted craft.
+              </p>
+              <a
+                href="./AI.pdf"
+                id="pdfBtn"
+                class="btn btn-gold deck-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Full Slide Presentation
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M5 12h14m-6-6 6 6-6 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            <div class="deck-index">
+              <span><i>01</i> Concept</span>
+              <span><i>02</i> Map</span>
+              <span><i>03</i> AI Image</span>
+              <span><i>04</i> Desmos</span>
+              <span><i>05</i> Mermaid</span>
+              <span><i>06</i> LaTeX</span>
+              <span><i>07</i> NotebookLM</span>
+              <span><i>08</i> Recap</span>
+            </div>
+          </div>
+
+          <p class="deck-note reveal" data-delay="1">
+            Place your <code>AI.pdf</code> file next to
+            <code>index.html</code> and this button will open it.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="brand">
+          <span class="brand-mark">Unique</span>
+          <span class="brand-sub">BANGKOK</span>
+        </div>
+        <p>
+          A deeper look at the City of Angels — traditional soul, futuristic
+          pulse.
+        </p>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
