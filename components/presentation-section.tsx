@@ -26,7 +26,7 @@ export function PresentationSection() {
         />
 
         <Reveal className="mt-14">
-          <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-gold/25 bg-card">
+          <div className="mx-auto max-w-5xl overflow-hidden rounded-3xl border border-gold/25 bg-card shadow-[0_0_60px_color-mix(in_oklch,var(--neon-cyan)_10%,transparent)]">
             {/* window chrome */}
             <div className="flex items-center gap-2 border-b border-border bg-secondary/60 px-4 py-3">
               <span className="h-3 w-3 rounded-full bg-neon-pink/70" />
@@ -35,43 +35,30 @@ export function PresentationSection() {
               <span className="ml-3 truncate text-xs text-muted-foreground">AI.pdf — Unique Bangkok</span>
             </div>
 
-            {/* mock slide */}
-            <div className="relative aspect-[16/9] bg-[radial-gradient(circle_at_70%_20%,color-mix(in_oklch,var(--gold)_16%,transparent),transparent_55%),radial-gradient(circle_at_20%_90%,color-mix(in_oklch,var(--neon-pink)_16%,transparent),transparent_55%)]">
-              <div className="flex h-full flex-col items-center justify-center px-6 text-center">
-                <span className="text-xs font-medium uppercase tracking-[0.35em] text-gold">
-                  Slide Presentation
-                </span>
-                <h3 className="mt-4 text-balance font-serif text-3xl font-bold sm:text-4xl md:text-5xl">
-                  Unique Bangkok
-                </h3>
-                <p className="mt-3 max-w-md text-sm text-muted-foreground">
-                  The City of Angels — a deeper look through culture, food, and AI-assisted craft.
-                </p>
+            <div className="border-b border-border bg-background/60 px-4 py-3">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">Review the deck</p>
+                  <p className="mt-1 text-xs text-muted-foreground">Scroll inside the viewer to move through every slide</p>
+                </div>
                 <button
                   type="button"
                   onClick={openPdf}
-                  className="group mt-8 inline-flex items-center gap-2 rounded-full bg-gold px-8 py-3.5 text-sm font-semibold text-primary-foreground transition-transform hover:-translate-y-0.5"
+                  className="group inline-flex shrink-0 items-center gap-2 rounded-full border border-gold/40 px-4 py-2 text-xs font-semibold text-gold transition-all hover:-translate-y-0.5 hover:bg-gold hover:text-primary-foreground"
                 >
-                  View Full Slide Presentation
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                    className="transition-transform group-hover:translate-x-0.5"
-                  >
-                    <path
-                      d="M5 12h14m-6-6 6 6-6 6"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
+                  Open PDF
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
+                    <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </button>
               </div>
             </div>
+
+            <iframe
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/AI.pdf#view=FitH`}
+              title="Unique Bangkok slide presentation review"
+              className="h-[70vh] min-h-[520px] w-full bg-background"
+            />
 
             {/* slide index */}
             <div className="flex flex-wrap gap-2 border-t border-border bg-secondary/30 px-4 py-4">

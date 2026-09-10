@@ -36,12 +36,13 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <a href="#concept" className="group flex items-center gap-2">
-          <span className="font-serif text-lg font-bold tracking-tight text-gold">
-            Unique
-          </span>
-          <span className="text-lg font-light tracking-[0.3em] text-foreground/90">
-            BANGKOK
-          </span>
+          <img
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/logo.svg`}
+            alt="Unique Bangkok"
+            className="h-9 w-9 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-105"
+          />
+          <span className="font-serif text-lg font-bold tracking-tight text-gold">Unique</span>
+          <span className="text-lg font-light tracking-[0.3em] text-foreground/90">BANGKOK</span>
         </a>
 
         <ul className="hidden items-center gap-1 lg:flex">

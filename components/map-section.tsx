@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 import { cn } from '@/lib/utils'
@@ -15,6 +16,7 @@ type Pin = {
   height: number
   x: number
   y: number
+  image: string
 }
 
 const pins: Pin[] = [
@@ -28,6 +30,7 @@ const pins: Pin[] = [
     height: 88,
     x: 26,
     y: 40,
+    image: '/images/map/palace.jpg',
   },
   {
     id: 'arun',
@@ -39,6 +42,7 @@ const pins: Pin[] = [
     height: 96,
     x: 16,
     y: 58,
+    image: '/images/map/arun.jpg',
   },
   {
     id: 'swing',
@@ -50,6 +54,7 @@ const pins: Pin[] = [
     height: 72,
     x: 42,
     y: 34,
+    image: '/images/map/swing.jpg',
   },
   {
     id: 'chatuchak',
@@ -61,6 +66,7 @@ const pins: Pin[] = [
     height: 46,
     x: 50,
     y: 16,
+    image: '/images/map/chatuchak.jpg',
   },
   {
     id: 'nana',
@@ -72,6 +78,7 @@ const pins: Pin[] = [
     height: 40,
     x: 60,
     y: 30,
+    image: '/images/map/coffee.jpg',
   },
   {
     id: 'jayfai',
@@ -83,6 +90,7 @@ const pins: Pin[] = [
     height: 34,
     x: 48,
     y: 46,
+    image: '/images/map/jayfai.jpg',
   },
   {
     id: 'thipsamai',
@@ -94,6 +102,7 @@ const pins: Pin[] = [
     height: 30,
     x: 58,
     y: 52,
+    image: '/images/map/thipsamai.jpg',
   },
   {
     id: 'yaowarat',
@@ -105,6 +114,7 @@ const pins: Pin[] = [
     height: 58,
     x: 34,
     y: 66,
+    image: '/images/map/yaowarat.jpg',
   },
 ]
 
@@ -118,8 +128,8 @@ export function MapSection() {
         <SectionHeading
           index="02"
           kicker="Map"
-          title="A 3D map of the city"
-          description="Tilt into an isometric Bangkok. Tap any glowing landmark to slide open its story — sacred sites in gold, unforgettable food in neon pink."
+          title="Bangkok, drawn as a living city"
+          description="Read the city as a layered urban plan: the Chao Phraya, old-town landmarks, market districts, and the food trail that connects them. Tap a location to see the real place."
         />
 
         <Reveal className="mt-14">
@@ -130,7 +140,7 @@ export function MapSection() {
                 aria-hidden={false}
                 className="absolute inset-0"
                 style={{
-                  transform: 'rotateX(56deg) rotateZ(-42deg) scale(0.86)',
+                      transform: 'rotateX(0deg) rotateZ(0deg) scale(1)',
                   transformStyle: 'preserve-3d',
                 }}
               >
@@ -158,7 +168,16 @@ export function MapSection() {
                     strokeWidth="7"
                     strokeLinecap="round"
                   />
+                  <path d="M2 24 C 28 18, 52 30, 98 20" fill="none" stroke="color-mix(in oklch, var(--gold) 30%, transparent)" strokeWidth="0.7" strokeDasharray="2 2" />
+                  <path d="M4 76 C 30 62, 60 78, 96 60" fill="none" stroke="color-mix(in oklch, var(--gold) 25%, transparent)" strokeWidth="0.7" strokeDasharray="2 2" />
+                  <path d="M18 2 C 30 24, 28 58, 22 98" fill="none" stroke="color-mix(in oklch, var(--neon-cyan) 22%, transparent)" strokeWidth="0.7" strokeDasharray="1.5 2.5" />
+                  <path d="M72 2 C 62 25, 74 55, 68 98" fill="none" stroke="color-mix(in oklch, var(--neon-cyan) 22%, transparent)" strokeWidth="0.7" strokeDasharray="1.5 2.5" />
                 </svg>
+
+                <span className="absolute left-[8%] top-[12%] text-[10px] font-semibold uppercase tracking-[0.25em] text-neon-cyan/70">Chatuchak</span>
+                <span className="absolute left-[9%] top-[78%] text-[10px] font-semibold uppercase tracking-[0.25em] text-gold/70">Old Town</span>
+                <span className="absolute right-[10%] top-[24%] text-[10px] font-semibold uppercase tracking-[0.25em] text-neon-pink/70">Sukhumvit</span>
+                <span className="absolute right-[11%] bottom-[13%] text-[10px] font-semibold uppercase tracking-[0.25em] text-neon-cyan/70">Chinatown</span>
 
                 {/* extruded landmarks + pins */}
                 {pins.map((pin) => {
@@ -258,16 +277,16 @@ export function MapSection() {
                     </button>
                   </div>
 
-                  {/* image placeholder */}
                   <div
-                    className="mt-5 flex aspect-[4/3] items-center justify-center rounded-2xl border border-border bg-[radial-gradient(circle_at_50%_30%,color-mix(in_oklch,var(--gold)_16%,transparent),transparent_65%)] bg-background/60"
+                    className="relative mt-5 aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-background/60"
                     style={{
                       boxShadow: `inset 0 0 40px color-mix(in oklch, ${activePin.type === 'food' ? 'var(--neon-pink)' : 'var(--gold)'} 12%, transparent)`,
                     }}
                   >
-                    <span className="text-xs uppercase tracking-widest text-muted-foreground">
-                      {activePin.name} — image
-                    </span>
+                    <Image src={activePin.image} alt={activePin.name} fill sizes="(max-width: 768px) 100vw, 360px" className="object-cover" />
+                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent px-4 pb-3 pt-10">
+                      <p className="text-xs font-medium text-foreground/80">Bangkok field note</p>
+                    </div>
                   </div>
 
                   <h3 className="mt-5 font-serif text-2xl font-semibold leading-tight text-balance">
