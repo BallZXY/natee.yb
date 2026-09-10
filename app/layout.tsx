@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Playfair_Display, Outfit } from 'next/font/google'
+import { BangkokAtmosphere } from '@/components/bangkok-atmosphere'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -20,6 +21,10 @@ export const metadata: Metadata = {
   description:
     'An immersive showcase of Bangkok: its temples, night neon, hidden gems, and the AI-powered creative process behind exploring the city.',
   generator: 'v0.app',
+  icons: {
+    icon: '/logo.svg',
+    apple: '/logo.svg',
+  },
 }
 
 export const viewport: Viewport = {
@@ -35,6 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfair.variable} ${outfit.variable} bg-background`}>
       <body className="font-sans antialiased">
+        <BangkokAtmosphere />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
