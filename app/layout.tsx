@@ -22,8 +22,8 @@ export const metadata: Metadata = {
     'An immersive showcase of Bangkok: its temples, night neon, hidden gems, and the AI-powered creative process behind exploring the city.',
   generator: 'v0.app',
   icons: {
-    icon: '/logo.svg',
-    apple: '/logo.svg',
+    icon: '/natee.yb/logo.svg?v=2',
+    apple: '/natee.yb/logo.svg?v=2',
   },
 }
 
