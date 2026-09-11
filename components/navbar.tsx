@@ -11,6 +11,7 @@ const links = [
   { id: 'mermaid', label: 'Mermaid' },
   { id: 'latex', label: 'LaTeX' },
   { id: 'notebooklm', label: 'NotebookLM' },
+  { id: 'tuk-tuk', label: 'Tuk-Tuk Lab' },
   { id: 'presentation', label: 'Presentation' },
 ]
 
