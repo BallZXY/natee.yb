@@ -1,0 +1,64 @@
+# 1. Abstraction & Base Class (คลาสแม่)
+class Character:
+    def __init__(self, name, hp, atk):
+        self.name = name
+        # 3. Encapsulation: ใช้ __ นำหน้าชื่อตัวแปรเพื่อทำเป็น Private (ซ่อนข้อมูล)
+        self.__hp = hp  
+        self.atk = atk
+
+    # Getter สำหรับเข้าถึงข้อมูล HP ที่ถูกซ่อนไว้
+    def get_hp(self):
+        return self.__hp
+
+    # เมธอดสำหรับรับความเสียหาย (จัดการข้อมูลภายในอย่างปลอดภัย)
+    def take_damage(self, damage):
+        self.__hp -= damage
+        if self.__hp < 0:
+            self.__hp = 0
+        print(f"💥 {self.name} รับความเสียหาย {damage} หน่วย (HP เหลือ: {self.__hp})")
+
+    # 2. Polymorphism: เมธอดกลางที่คลาสลูกจะนำไปเปลี่ยนรูปแบบการทำงาน
+    def attack(self):
+        print(f"⚔️ {self.name} โจมตีปกติ ทำดาเมจ {self.atk}")
+
+
+# 1. Inheritance: คลาสลูก Warrior สืบทอดมาจาก Character
+class Warrior(Character):
+    def __init__(self, name, hp, atk, shield_def):
+        # ดึงคุณสมบัติจากคลาสแม่มาใช้
+        super().__init__(name, hp, atk)
+        self.shield_def = shield_def  # คุณสมบัติเฉพาะของ Warrior
+
+    # 2. Polymorphism: Override เมธอด attack ให้เป็นแบบของตัวเอง
+    def attack(self):
+        print(f"🪓 {self.name} ใช้ขวานฟันอย่างรุนแรง! ทำดาเมจ {self.atk + 10}")
+
+
+# 1. Inheritance: คลาสลูก Mage สืบทอดมาจาก Character
+class Mage(Character):
+    def __init__(self, name, hp, atk, mp):
+        super().__init__(name, hp, atk)
+        self.mp = mp  # คุณสมบัติเฉพาะของ Mage
+
+    # 2. Polymorphism: Override เมธอด attack ให้เป็นแบบของตัวเอง
+    def attack(self):
+        if self.mp >= 10:
+            self.mp -= 10
+            print(f"🔥 {self.name} ร่ายมนตร์ยิงลูกไฟ! ทำดาเมจ {self.atk * 2} (เสีย 10 MP, เหลือ {self.mp} MP)")
+        else:
+            print(f"🪄 {self.name} มานาหมด! ใช้ไม้เท้าเคาะเบาๆ ทำดาเมจ {self.atk}")
+
+
+# --- เริ่มใช้งานระบบ (Object Creation) ---
+
+# สร้างตัวละคร (Objects)
+player1 = Warrior("Thor", hp=150, atk=20, shield_def=15)
+player2 = Mage("Gandalf", hp=80, atk=15, mp=20)
+
+# ทดสอบการโจมตี (Polymorphism)
+player1.attack()  # แสดงผลแบบนักรบ
+player2.attack()  # แสดงผลแบบนักเวท
+
+# ทดสอบระบบป้องกันข้อมูล (Encapsulation)
+# print(player1.__hp) # ❌ บรรทัดนี้จะ Error เพราะเข้าถึงตรงๆ ไม่ได้
+player1.take_damage(30) #      ต้องสั่งผ่านเมธอดที่เตรียมไว้เท่านั้น
