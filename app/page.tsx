@@ -3,6 +3,7 @@ import { ConceptSection } from '@/components/concept-section'
 import { MapSection } from '@/components/map-section'
 import { ShowcaseSection, type ShowcaseSectionProps } from '@/components/showcase-section'
 import { PresentationSection } from '@/components/presentation-section'
+import { SciFiTukTuk } from '@/components/sci-fi-tuk-tuk'
 import { SiteFooter } from '@/components/site-footer'
 
 const showcases: ShowcaseSectionProps[] = [
@@ -177,6 +178,7 @@ export default function Page() {
         {showcases.map((props) => (
           <ShowcaseSection key={props.id} {...props} />
         ))}
+        <SciFiTukTuk />
         <PresentationSection />
       </main>
       <SiteFooter />
