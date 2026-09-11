@@ -37,7 +37,7 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
         <a href="#concept" className="group flex items-center gap-2">
           <img
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/logo.svg`}
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/logo.svg?v=2`}
             alt="Unique Bangkok"
             className="h-9 w-9 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-105"
           />

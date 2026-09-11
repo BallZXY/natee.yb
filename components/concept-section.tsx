@@ -8,7 +8,7 @@ const contrasts = [
 ]
 
 export function ConceptSection() {
-  const imageSrc = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/images/bangkok-scifi.png`
+  const imageSrc = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/images/bangkok-scifi.png?v=2`
 
   return (
     <section id="concept" className="relative scroll-mt-20 overflow-hidden">

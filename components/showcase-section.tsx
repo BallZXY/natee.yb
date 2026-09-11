@@ -31,7 +31,7 @@ function ImageFrame({ frame, tone }: { frame: Frame; tone: 'muted' | 'accent' })
   const ringColor = tone === 'accent' ? 'ring-gold/40' : 'ring-border'
   const imagePath = frame.src ?? frame.dropPath
   const imageSrc = imagePath
-    ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${imagePath}`
+    ? `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${imagePath}?v=2`
     : undefined
   const badge =
     tone === 'accent'
