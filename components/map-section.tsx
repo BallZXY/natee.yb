@@ -283,7 +283,13 @@ export function MapSection() {
                       boxShadow: `inset 0 0 40px color-mix(in oklch, ${activePin.type === 'food' ? 'var(--neon-pink)' : 'var(--gold)'} 12%, transparent)`,
                     }}
                   >
-                    <Image src={`${activePin.image}?v=2`} alt={activePin.name} fill sizes="(max-width: 768px) 100vw, 360px" className="object-cover" />
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}${activePin.image}?v=3`}
+                      alt={activePin.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 360px"
+                      className="object-cover"
+                    />
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 to-transparent px-4 pb-3 pt-10">
                       <p className="text-xs font-medium text-foreground/80">Bangkok field note</p>
                     </div>
